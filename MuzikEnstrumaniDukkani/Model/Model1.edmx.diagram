@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="7628fc34c5d54aacb1c07218e8e90351" Name="Diagram1">
+        <EntityTypeShape EntityType="MuzikEnstrumaniDukkaniModel.Destek_Kategorileri" Width="1.5" PointX="3" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MuzikEnstrumaniDukkaniModel.Destek_Talepleri" Width="1.5" PointX="5.25" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MuzikEnstrumaniDukkaniModel.Enstruman_Kategorileri" Width="1.5" PointX="5.75" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MuzikEnstrumaniDukkaniModel.Enstrumanlar" Width="1.5" PointX="8" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="MuzikEnstrumaniDukkaniModel.Musteriler" Width="1.5" PointX="0.75" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MuzikEnstrumaniDukkaniModel.Siparis_Detay" Width="1.5" PointX="10.25" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MuzikEnstrumaniDukkaniModel.Siparisler" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="MuzikEnstrumaniDukkaniModel.sysdiagrams" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="MuzikEnstrumaniDukkaniModel.FK_Destek_Talepleri_Destek_Kategorileri" ManuallyRouted="false" />
+        <AssociationConnector Association="MuzikEnstrumaniDukkaniModel.FK_Destek_Talepleri_Siparisler" ManuallyRouted="false" />
+        <AssociationConnector Association="MuzikEnstrumaniDukkaniModel.FK_Enstrumanlar_Enstruman_Kategorileri" ManuallyRouted="false" />
+        <AssociationConnector Association="MuzikEnstrumaniDukkaniModel.FK_Siparis_Detay_Enstrumanlar" ManuallyRouted="false" />
+        <AssociationConnector Association="MuzikEnstrumaniDukkaniModel.FK_Siparisler_Musteriler" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

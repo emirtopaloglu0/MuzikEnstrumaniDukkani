@@ -1,0 +1,501 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="MuzikEnstrumaniDukkaniModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Destek_Kategorileri">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Ad" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Destek_Talepleri">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Siparis_Id" Type="int" Nullable="false" />
+          <Property Name="Destek_Kategori_Id" Type="int" Nullable="false" />
+          <Property Name="Talep" Type="text" />
+          <Property Name="Admin_Cevap" Type="text" />
+          <Property Name="Okundu" Type="bit" Nullable="false" />
+          <Property Name="Isleme_Alindi" Type="bit" Nullable="false" />
+          <Property Name="Tamamlandi" Type="bit" Nullable="false" />
+          <Property Name="Aktif" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Enstruman_Kategorileri">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Ad" Type="nvarchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Enstrumanlar">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Ad" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="Kategori_Id" Type="int" Nullable="false" />
+          <Property Name="Uretim_Yeri" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Stok" Type="int" Nullable="false" />
+          <Property Name="Fiyat" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Musteriler">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Ad" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Soyad" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Kullanici_Adi" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Sifre" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="Adres" Type="text" Nullable="false" />
+          <Property Name="Posta" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Cinsiyet" Type="char" MaxLength="1" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Siparis_Detay">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Siparis_No" Type="char" MaxLength="10" Nullable="false" />
+          <Property Name="Enstruman_Id" Type="int" />
+          <Property Name="Adet" Type="int" />
+        </EntityType>
+        <EntityType Name="Siparisler">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Siparis_No" Type="char" MaxLength="10" Nullable="false" />
+          <Property Name="Musteri_Id" Type="int" Nullable="false" />
+          <Property Name="Tutar" Type="int" Nullable="false" />
+          <Property Name="Siparis_Tarihi" Type="date" Nullable="false" />
+          <Property Name="Aktif" Type="bit" Nullable="false" />
+          <Property Name="Iptal" Type="bit" Nullable="false" />
+          <Property Name="Tamamlandi" Type="bit" Nullable="false" />
+          <Property Name="Teslim_Tarihi" Type="date" />
+          <Property Name="Iptal_Tarihi" Type="date" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <Association Name="FK_Destek_Talepleri_Destek_Kategorileri">
+          <End Role="Destek_Kategorileri" Type="Self.Destek_Kategorileri" Multiplicity="1" />
+          <End Role="Destek_Talepleri" Type="Self.Destek_Talepleri" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Destek_Kategorileri">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Destek_Talepleri">
+              <PropertyRef Name="Destek_Kategori_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Destek_Talepleri_Siparisler">
+          <End Role="Siparisler" Type="Self.Siparisler" Multiplicity="1" />
+          <End Role="Destek_Talepleri" Type="Self.Destek_Talepleri" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Siparisler">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Destek_Talepleri">
+              <PropertyRef Name="Siparis_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Enstrumanlar_Enstruman_Kategorileri">
+          <End Role="Enstruman_Kategorileri" Type="Self.Enstruman_Kategorileri" Multiplicity="1" />
+          <End Role="Enstrumanlar" Type="Self.Enstrumanlar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Enstruman_Kategorileri">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Enstrumanlar">
+              <PropertyRef Name="Kategori_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Siparis_Detay_Enstrumanlar">
+          <End Role="Enstrumanlar" Type="Self.Enstrumanlar" Multiplicity="0..1" />
+          <End Role="Siparis_Detay" Type="Self.Siparis_Detay" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Enstrumanlar">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Siparis_Detay">
+              <PropertyRef Name="Enstruman_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <!--Errors Found During Generation:
+warning 6035: The relationship 'FK_Siparis_Detay_Siparisler' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
+        <Association Name="FK_Siparis_Detay_Siparisler" />-->
+        <Association Name="FK_Siparisler_Musteriler">
+          <End Role="Musteriler" Type="Self.Musteriler" Multiplicity="1" />
+          <End Role="Siparisler" Type="Self.Siparisler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Musteriler">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Siparisler">
+              <PropertyRef Name="Musteri_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="MuzikEnstrumaniDukkaniModelStoreContainer">
+          <EntitySet Name="Destek_Kategorileri" EntityType="Self.Destek_Kategorileri" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Destek_Talepleri" EntityType="Self.Destek_Talepleri" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Enstruman_Kategorileri" EntityType="Self.Enstruman_Kategorileri" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Enstrumanlar" EntityType="Self.Enstrumanlar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Musteriler" EntityType="Self.Musteriler" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Siparis_Detay" EntityType="Self.Siparis_Detay" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Siparisler" EntityType="Self.Siparisler" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Destek_Talepleri_Destek_Kategorileri" Association="Self.FK_Destek_Talepleri_Destek_Kategorileri">
+            <End Role="Destek_Kategorileri" EntitySet="Destek_Kategorileri" />
+            <End Role="Destek_Talepleri" EntitySet="Destek_Talepleri" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Destek_Talepleri_Siparisler" Association="Self.FK_Destek_Talepleri_Siparisler">
+            <End Role="Siparisler" EntitySet="Siparisler" />
+            <End Role="Destek_Talepleri" EntitySet="Destek_Talepleri" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Enstrumanlar_Enstruman_Kategorileri" Association="Self.FK_Enstrumanlar_Enstruman_Kategorileri">
+            <End Role="Enstruman_Kategorileri" EntitySet="Enstruman_Kategorileri" />
+            <End Role="Enstrumanlar" EntitySet="Enstrumanlar" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Siparis_Detay_Enstrumanlar" Association="Self.FK_Siparis_Detay_Enstrumanlar">
+            <End Role="Enstrumanlar" EntitySet="Enstrumanlar" />
+            <End Role="Siparis_Detay" EntitySet="Siparis_Detay" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Siparisler_Musteriler" Association="Self.FK_Siparisler_Musteriler">
+            <End Role="Musteriler" EntitySet="Musteriler" />
+            <End Role="Siparisler" EntitySet="Siparisler" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MuzikEnstrumaniDukkaniModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Destek_Kategorileri">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Ad" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Destek_Talepleri" Relationship="Self.FK_Destek_Talepleri_Destek_Kategorileri" FromRole="Destek_Kategorileri" ToRole="Destek_Talepleri" />
+        </EntityType>
+        <EntityType Name="Destek_Talepleri">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Siparis_Id" Type="Int32" Nullable="false" />
+          <Property Name="Destek_Kategori_Id" Type="Int32" Nullable="false" />
+          <Property Name="Talep" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Admin_Cevap" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Okundu" Type="Boolean" Nullable="false" />
+          <Property Name="Isleme_Alindi" Type="Boolean" Nullable="false" />
+          <Property Name="Tamamlandi" Type="Boolean" Nullable="false" />
+          <Property Name="Aktif" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Destek_Kategorileri" Relationship="Self.FK_Destek_Talepleri_Destek_Kategorileri" FromRole="Destek_Talepleri" ToRole="Destek_Kategorileri" />
+          <NavigationProperty Name="Siparisler" Relationship="Self.FK_Destek_Talepleri_Siparisler" FromRole="Destek_Talepleri" ToRole="Siparisler" />
+        </EntityType>
+        <EntityType Name="Enstruman_Kategorileri">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Ad" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Enstrumanlar" Relationship="Self.FK_Enstrumanlar_Enstruman_Kategorileri" FromRole="Enstruman_Kategorileri" ToRole="Enstrumanlar" />
+        </EntityType>
+        <EntityType Name="Enstrumanlar">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Ad" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Kategori_Id" Type="Int32" Nullable="false" />
+          <Property Name="Uretim_Yeri" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Stok" Type="Int32" Nullable="false" />
+          <Property Name="Fiyat" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Enstruman_Kategorileri" Relationship="Self.FK_Enstrumanlar_Enstruman_Kategorileri" FromRole="Enstrumanlar" ToRole="Enstruman_Kategorileri" />
+          <NavigationProperty Name="Siparis_Detay" Relationship="Self.FK_Siparis_Detay_Enstrumanlar" FromRole="Enstrumanlar" ToRole="Siparis_Detay" />
+        </EntityType>
+        <EntityType Name="Musteriler">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Ad" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Soyad" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Kullanici_Adi" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Sifre" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Adres" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Posta" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Cinsiyet" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Siparisler" Relationship="Self.FK_Siparisler_Musteriler" FromRole="Musteriler" ToRole="Siparisler" />
+        </EntityType>
+        <EntityType Name="Siparis_Detay">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Siparis_No" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Enstruman_Id" Type="Int32" />
+          <Property Name="Adet" Type="Int32" />
+          <NavigationProperty Name="Enstrumanlar" Relationship="Self.FK_Siparis_Detay_Enstrumanlar" FromRole="Siparis_Detay" ToRole="Enstrumanlar" />
+        </EntityType>
+        <EntityType Name="Siparisler">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Siparis_No" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Musteri_Id" Type="Int32" Nullable="false" />
+          <Property Name="Tutar" Type="Int32" Nullable="false" />
+          <Property Name="Siparis_Tarihi" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Aktif" Type="Boolean" Nullable="false" />
+          <Property Name="Iptal" Type="Boolean" Nullable="false" />
+          <Property Name="Tamamlandi" Type="Boolean" Nullable="false" />
+          <Property Name="Teslim_Tarihi" Type="DateTime" Precision="0" />
+          <Property Name="Iptal_Tarihi" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Destek_Talepleri" Relationship="Self.FK_Destek_Talepleri_Siparisler" FromRole="Siparisler" ToRole="Destek_Talepleri" />
+          <NavigationProperty Name="Musteriler" Relationship="Self.FK_Siparisler_Musteriler" FromRole="Siparisler" ToRole="Musteriler" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <Association Name="FK_Destek_Talepleri_Destek_Kategorileri">
+          <End Role="Destek_Kategorileri" Type="Self.Destek_Kategorileri" Multiplicity="1" />
+          <End Role="Destek_Talepleri" Type="Self.Destek_Talepleri" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Destek_Kategorileri">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Destek_Talepleri">
+              <PropertyRef Name="Destek_Kategori_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Destek_Talepleri_Siparisler">
+          <End Role="Siparisler" Type="Self.Siparisler" Multiplicity="1" />
+          <End Role="Destek_Talepleri" Type="Self.Destek_Talepleri" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Siparisler">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Destek_Talepleri">
+              <PropertyRef Name="Siparis_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Enstrumanlar_Enstruman_Kategorileri">
+          <End Role="Enstruman_Kategorileri" Type="Self.Enstruman_Kategorileri" Multiplicity="1" />
+          <End Role="Enstrumanlar" Type="Self.Enstrumanlar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Enstruman_Kategorileri">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Enstrumanlar">
+              <PropertyRef Name="Kategori_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Siparis_Detay_Enstrumanlar">
+          <End Role="Enstrumanlar" Type="Self.Enstrumanlar" Multiplicity="0..1" />
+          <End Role="Siparis_Detay" Type="Self.Siparis_Detay" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Enstrumanlar">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Siparis_Detay">
+              <PropertyRef Name="Enstruman_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Siparisler_Musteriler">
+          <End Role="Musteriler" Type="Self.Musteriler" Multiplicity="1" />
+          <End Role="Siparisler" Type="Self.Siparisler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Musteriler">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Siparisler">
+              <PropertyRef Name="Musteri_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="MuzikEnstrumaniDukkaniEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Destek_Kategorileri" EntityType="Self.Destek_Kategorileri" />
+          <EntitySet Name="Destek_Talepleri" EntityType="Self.Destek_Talepleri" />
+          <EntitySet Name="Enstruman_Kategorileri" EntityType="Self.Enstruman_Kategorileri" />
+          <EntitySet Name="Enstrumanlar" EntityType="Self.Enstrumanlar" />
+          <EntitySet Name="Musteriler" EntityType="Self.Musteriler" />
+          <EntitySet Name="Siparis_Detay" EntityType="Self.Siparis_Detay" />
+          <EntitySet Name="Siparisler" EntityType="Self.Siparisler" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <AssociationSet Name="FK_Destek_Talepleri_Destek_Kategorileri" Association="Self.FK_Destek_Talepleri_Destek_Kategorileri">
+            <End Role="Destek_Kategorileri" EntitySet="Destek_Kategorileri" />
+            <End Role="Destek_Talepleri" EntitySet="Destek_Talepleri" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Destek_Talepleri_Siparisler" Association="Self.FK_Destek_Talepleri_Siparisler">
+            <End Role="Siparisler" EntitySet="Siparisler" />
+            <End Role="Destek_Talepleri" EntitySet="Destek_Talepleri" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Enstrumanlar_Enstruman_Kategorileri" Association="Self.FK_Enstrumanlar_Enstruman_Kategorileri">
+            <End Role="Enstruman_Kategorileri" EntitySet="Enstruman_Kategorileri" />
+            <End Role="Enstrumanlar" EntitySet="Enstrumanlar" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Siparis_Detay_Enstrumanlar" Association="Self.FK_Siparis_Detay_Enstrumanlar">
+            <End Role="Enstrumanlar" EntitySet="Enstrumanlar" />
+            <End Role="Siparis_Detay" EntitySet="Siparis_Detay" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Siparisler_Musteriler" Association="Self.FK_Siparisler_Musteriler">
+            <End Role="Musteriler" EntitySet="Musteriler" />
+            <End Role="Siparisler" EntitySet="Siparisler" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="MuzikEnstrumaniDukkaniModelStoreContainer" CdmEntityContainer="MuzikEnstrumaniDukkaniEntities">
+          <EntitySetMapping Name="Destek_Kategorileri">
+            <EntityTypeMapping TypeName="MuzikEnstrumaniDukkaniModel.Destek_Kategorileri">
+              <MappingFragment StoreEntitySet="Destek_Kategorileri">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Ad" ColumnName="Ad" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Destek_Talepleri">
+            <EntityTypeMapping TypeName="MuzikEnstrumaniDukkaniModel.Destek_Talepleri">
+              <MappingFragment StoreEntitySet="Destek_Talepleri">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Siparis_Id" ColumnName="Siparis_Id" />
+                <ScalarProperty Name="Destek_Kategori_Id" ColumnName="Destek_Kategori_Id" />
+                <ScalarProperty Name="Talep" ColumnName="Talep" />
+                <ScalarProperty Name="Admin_Cevap" ColumnName="Admin_Cevap" />
+                <ScalarProperty Name="Okundu" ColumnName="Okundu" />
+                <ScalarProperty Name="Isleme_Alindi" ColumnName="Isleme_Alindi" />
+                <ScalarProperty Name="Tamamlandi" ColumnName="Tamamlandi" />
+                <ScalarProperty Name="Aktif" ColumnName="Aktif" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Enstruman_Kategorileri">
+            <EntityTypeMapping TypeName="MuzikEnstrumaniDukkaniModel.Enstruman_Kategorileri">
+              <MappingFragment StoreEntitySet="Enstruman_Kategorileri">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Ad" ColumnName="Ad" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Enstrumanlar">
+            <EntityTypeMapping TypeName="MuzikEnstrumaniDukkaniModel.Enstrumanlar">
+              <MappingFragment StoreEntitySet="Enstrumanlar">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Ad" ColumnName="Ad" />
+                <ScalarProperty Name="Kategori_Id" ColumnName="Kategori_Id" />
+                <ScalarProperty Name="Uretim_Yeri" ColumnName="Uretim_Yeri" />
+                <ScalarProperty Name="Stok" ColumnName="Stok" />
+                <ScalarProperty Name="Fiyat" ColumnName="Fiyat" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Musteriler">
+            <EntityTypeMapping TypeName="MuzikEnstrumaniDukkaniModel.Musteriler">
+              <MappingFragment StoreEntitySet="Musteriler">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Ad" ColumnName="Ad" />
+                <ScalarProperty Name="Soyad" ColumnName="Soyad" />
+                <ScalarProperty Name="Kullanici_Adi" ColumnName="Kullanici_Adi" />
+                <ScalarProperty Name="Sifre" ColumnName="Sifre" />
+                <ScalarProperty Name="Adres" ColumnName="Adres" />
+                <ScalarProperty Name="Posta" ColumnName="Posta" />
+                <ScalarProperty Name="Cinsiyet" ColumnName="Cinsiyet" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Siparis_Detay">
+            <EntityTypeMapping TypeName="MuzikEnstrumaniDukkaniModel.Siparis_Detay">
+              <MappingFragment StoreEntitySet="Siparis_Detay">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Siparis_No" ColumnName="Siparis_No" />
+                <ScalarProperty Name="Enstruman_Id" ColumnName="Enstruman_Id" />
+                <ScalarProperty Name="Adet" ColumnName="Adet" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Siparisler">
+            <EntityTypeMapping TypeName="MuzikEnstrumaniDukkaniModel.Siparisler">
+              <MappingFragment StoreEntitySet="Siparisler">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Siparis_No" ColumnName="Siparis_No" />
+                <ScalarProperty Name="Musteri_Id" ColumnName="Musteri_Id" />
+                <ScalarProperty Name="Tutar" ColumnName="Tutar" />
+                <ScalarProperty Name="Siparis_Tarihi" ColumnName="Siparis_Tarihi" />
+                <ScalarProperty Name="Aktif" ColumnName="Aktif" />
+                <ScalarProperty Name="Iptal" ColumnName="Iptal" />
+                <ScalarProperty Name="Tamamlandi" ColumnName="Tamamlandi" />
+                <ScalarProperty Name="Teslim_Tarihi" ColumnName="Teslim_Tarihi" />
+                <ScalarProperty Name="Iptal_Tarihi" ColumnName="Iptal_Tarihi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="MuzikEnstrumaniDukkaniModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
