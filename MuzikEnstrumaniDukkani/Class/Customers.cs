@@ -13,11 +13,13 @@ namespace MuzikEnstrumaniDukkani.Class
         public static Customers instance = new Customers();
         MuzikEnstrumaniDukkaniEntities db = DB_Connection.db;
 
+        public bool IsAdmin;
+
         Model.Musteriler IsCustomerReal(string username)
         {
             try
             {
-                
+
                 var user = db.Musteriler.FirstOrDefault(x => x.Kullanici_Adi == username);
                 if (user != null)
                 {
@@ -34,20 +36,21 @@ namespace MuzikEnstrumaniDukkani.Class
         public bool LogIn(string username, string pass)
         {
             var user = IsCustomerReal(username);
+
+
             if (user != null)
             {
-                if (user.Sifre == pass)
+                if (user.Sifre == pass) 
                 {
-                    if(user.Id == 2) // admin Id
+                    if(user.Id == 2)
                     {
-                        Form1.instance.ShowAdminPanel();
-                        return false;
+                        IsAdmin = true;
                     }
                     else
                     {
-                        return true;
+                        IsAdmin = false;
                     }
-                    
+                    return true;
                 }
                 else
                 {
@@ -58,11 +61,14 @@ namespace MuzikEnstrumaniDukkani.Class
             {
                 HataliMesaj.KullaniciBulunamadi();
             }
+
+            
+
             return false;
         }
 
 
-        public bool Register(string name, string surname, string username, 
+        public bool Register(string name, string surname, string username,
             string pass, string mail, char gender, string address)
         {
             try
@@ -88,11 +94,11 @@ namespace MuzikEnstrumaniDukkani.Class
                     HataliMesaj.KullaniciVar();
                 }
             }
-            catch (Exception ex) 
+            catch (Exception ex)
             {
                 HataliMesaj.CatchError(ex);
             }
-            
+
 
             return false;
         }

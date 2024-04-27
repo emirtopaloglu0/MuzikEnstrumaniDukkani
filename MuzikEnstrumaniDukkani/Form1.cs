@@ -19,6 +19,7 @@ namespace MuzikEnstrumaniDukkani
         public static Form1 instance = new Form1();
 
         public char[] charsToTrim = { '*', ' ', '\'', '_', '-', '+', '$', '!', '^', '#', '%', '&', '/', '?', '(', ')', '=', '<', '>', '|', '£', '½', '{', '[', ']', '}' };
+
         
         public Form1()
         {
@@ -46,8 +47,16 @@ namespace MuzikEnstrumaniDukkani
             {
                 if (Customers.instance.LogIn(User_TextBox.Text, Pass_TextBox.Text))
                 {
-                    adminPanel1.Show();
-                    adminPanel1.Hide();
+                    if (Customers.instance.IsAdmin)
+                    {
+                        customerPanel1.Hide();
+                        adminPanel1.Show();
+                    }
+                    else
+                    {
+                        customerPanel1.Show();
+                        adminPanel1.Hide();
+                    }
                     pictureBox2.Dispose(); //giriş yapılırsa kaybolacak
                 }
             }
@@ -87,13 +96,6 @@ namespace MuzikEnstrumaniDukkani
             {
                 Pass_TextBox.PasswordChar = '*';
             }
-        }
-
-        internal void ShowAdminPanel()
-        {
-            adminPanel1.Show();
-            customerPanel1.Hide();
-            pictureBox2.Dispose();
         }
     }
 }
