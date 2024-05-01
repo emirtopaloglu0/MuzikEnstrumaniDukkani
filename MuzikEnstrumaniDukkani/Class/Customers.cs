@@ -50,6 +50,8 @@ namespace MuzikEnstrumaniDukkani.Class
                     {
                         IsAdmin = false;
                     }
+                    Properties.Settings.Default.UserId = user.Id;
+                    Properties.Settings.Default.Save();
                     return true;
                 }
                 else

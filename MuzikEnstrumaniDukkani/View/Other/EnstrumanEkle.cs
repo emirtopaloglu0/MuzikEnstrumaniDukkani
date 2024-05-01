@@ -31,20 +31,13 @@ namespace MuzikEnstrumaniDukkani.View.Other
                     if (Name_TextBox.Text != null && Cat_ComboBox.Text != null && UretimYeri_TextBox.Text != null
                     && Stok_TextBox.Text != null && Fiyat_TextBox.Text != null)
                     {
-                        Enstrumanlar enstrumanlar = new Enstrumanlar();
-                        enstrumanlar.Ad = Name_TextBox.Text.Trim();
-                        enstrumanlar.Uretim_Yeri = UretimYeri_TextBox.Text.Trim();
-                        enstrumanlar.Stok = Convert.ToInt32(Stok_TextBox.Text);
-                        enstrumanlar.Fiyat = Convert.ToInt32(Fiyat_TextBox.Text);
-
-                        enstrumanlar.Kategori_Id = Cat_ComboBox.SelectedIndex + 1;
-
-                        DB_Connection.db.Enstrumanlar.Add(enstrumanlar);
-                        DB_Connection.db.SaveChanges();
-
-                        BasariliMesaj.EnstrumanEklendi();
+                        if (C_Instruments.instance.AddIns(Name_TextBox.Text.Trim(), UretimYeri_TextBox.Text.Trim(),
+                            Convert.ToInt32(Stok_TextBox.Text), Convert.ToInt32(Fiyat_TextBox.Text),
+                            Cat_ComboBox.SelectedIndex + 1))
+                        {
+                            BasariliMesaj.EnstrumanEklendi();
+                        }
                         InstrumentPanel.instance.LoadData();
-
                         Close();
                     }
                     else

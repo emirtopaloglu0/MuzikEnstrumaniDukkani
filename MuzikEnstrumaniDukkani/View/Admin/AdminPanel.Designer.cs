@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
             this.View_Ins = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.ınstrumentPanel1 = new MuzikEnstrumaniDukkani.View.Admin.InstrumentPanel();
@@ -40,16 +39,6 @@
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Figtree Medium", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label1.Location = new System.Drawing.Point(85, 331);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(400, 46);
-            this.label1.TabIndex = 10;
-            this.label1.Text = "SATIŞLARI GÖRÜNTÜLEYEBİLİR\r\nDESTEK TALEPLERİNE CEVAP VEREBİLİR";
             // 
             // View_Ins
             // 
@@ -66,7 +55,6 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.ınstrumentPanel1);
             this.panel1.Controls.Add(this.orderPanel1);
             this.panel1.Controls.Add(this.supportPanel1);
@@ -121,6 +109,7 @@
             this.View_Tickets.TabIndex = 11;
             this.View_Tickets.Text = "Destek Taleplerini Görüntüle";
             this.View_Tickets.UseVisualStyleBackColor = false;
+            this.View_Tickets.Click += new System.EventHandler(this.View_Tickets_Click);
             // 
             // pictureBox1
             // 
@@ -146,15 +135,12 @@
             this.Name = "AdminPanel";
             this.Size = new System.Drawing.Size(1000, 690);
             this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button View_Ins;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button View_Orders;

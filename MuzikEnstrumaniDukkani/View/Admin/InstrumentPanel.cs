@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.Entity;
 using MuzikEnstrumaniDukkani.Mesajlar;
+using MuzikEnstrumaniDukkani.Properties;
 
 namespace MuzikEnstrumaniDukkani.View.Admin
 {
@@ -43,18 +44,17 @@ namespace MuzikEnstrumaniDukkani.View.Admin
 
         private void Remove_Ins(object sender, EventArgs e)
         {
-            Properties.Settings.Default.Id = Int32.Parse(dataGridView1.SelectedCells[0].Value.ToString());
-            Properties.Settings.Default.Save();
+            Settings.Default.Id = Int32.Parse(dataGridView1.SelectedCells[0].Value.ToString());
+            Settings.Default.Save();
             SoruMesaj.instance.SilSoru();
             if (SoruMesaj.instance.res == DialogResult.Yes)
             {
-                var ins = DB_Connection.db.Enstrumanlar.Find(Properties.Settings.Default.Id);
-                DB_Connection.db.Enstrumanlar.Remove(ins);
-                DB_Connection.db.SaveChanges();
-                BasariliMesaj.SilmeBasarili();
+                if (C_Instruments.instance.RemoveIns(Settings.Default.Id))
+                {
+                    BasariliMesaj.SilmeBasarili();
+                }
             }
         }
-
         private void View_Ins_Click(object sender, EventArgs e)
         {
             try

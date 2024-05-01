@@ -37,5 +37,10 @@ namespace MuzikEnstrumaniDukkani.Mesajlar
         {
             res = MessageBox.Show("Silmek İstediğinze Emin Misiniz?", "Dikkat!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
         }
+
+        internal void SatisSoru()
+        {
+            res = MessageBox.Show("Seçili Ürünü Satın Almak İstediğinize Emin Misiniz?", "Dikkat!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+        }
     }
 }

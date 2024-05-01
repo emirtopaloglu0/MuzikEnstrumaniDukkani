@@ -27,5 +27,11 @@ namespace MuzikEnstrumaniDukkani.Mesajlar
         {
             MessageBox.Show("Enstürman Başarıyla Silindi", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
+
+        internal static void SatinAlim()
+        {
+            MessageBox.Show("Sipariş Başarıyla Oluşturulmuştur!\nSiparişinizi 3 gün içerisinde iptal edebilirsiniz." +
+                "\nEğer iptal edilmezse teslimat yapılacaktır\nİyi günlerde kullanın!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
     }
 }

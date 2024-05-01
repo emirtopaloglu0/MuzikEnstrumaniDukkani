@@ -45,19 +45,14 @@ namespace MuzikEnstrumaniDukkani.View.Other
                 SoruMesaj.instance.GuncelleSoru();
                 if (SoruMesaj.instance.res == DialogResult.Yes)
                 {
-                    var ens = DB_Connection.db.Enstrumanlar.Find(id);
-                    ens.Ad = Name_TextBox.Text;
-                    ens.Kategori_Id = Cat_ComboBox.SelectedIndex + 1;
-                    ens.Uretim_Yeri = UretimYeri_TextBox.Text;
-                    ens.Stok = Int32.Parse(Stok_TextBox.Text);
-                    ens.Fiyat = Int32.Parse(Fiyat_TextBox.Text);
-
-                    DB_Connection.db.SaveChangesAsync();
-                    BasariliMesaj.GuncellmeBasarili();
-                    Close();
+                    if (C_Instruments.instance.EditIns(id, Name_TextBox.Text, UretimYeri_TextBox.Text,
+                        Cat_ComboBox.SelectedIndex + 1, Int32.Parse(Stok_TextBox.Text),
+                        Int32.Parse(Fiyat_TextBox.Text)))
+                    {
+                        BasariliMesaj.GuncellmeBasarili();
+                        Close();
+                    }
                 }
-
-
             }
             catch (Exception ex)
             {
@@ -65,24 +60,12 @@ namespace MuzikEnstrumaniDukkani.View.Other
             }
         }
 
-        
-
         private void EnstrumanDuzenle_Load(object sender, EventArgs e)
         {
             try
             {
-                //id = InstrumentPanel.instance.idd;
-                //ad = InstrumentPanel.instance.ad;
-                //kategori = InstrumentPanel.instance.kategori;
-                //uretim = InstrumentPanel.instance.uretim;
-                //stok = InstrumentPanel.instance.stok;
-                //fiyat = InstrumentPanel.instance.fiyat;
-
-                //GC.Collect();
-                //GC.WaitForPendingFinalizers();
-
                 id = Properties.Settings.Default.Id;
-                
+
 
                 var ens = DB_Connection.db.Enstrumanlar.Find(id);
                 Name_TextBox.Text = ens.Ad;

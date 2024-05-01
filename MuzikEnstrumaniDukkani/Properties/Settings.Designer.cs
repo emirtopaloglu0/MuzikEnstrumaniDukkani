@@ -34,5 +34,28 @@ namespace MuzikEnstrumaniDukkani.Properties {
                 this["Id"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public global::System.Collections.Generic.List<System.Int32> Cart {
+            get {
+                return ((global::System.Collections.Generic.List<System.Int32>)(this["Cart"]));
+            }
+            set {
+                this["Cart"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int UserId {
+            get {
+                return ((int)(this["UserId"]));
+            }
+            set {
+                this["UserId"] = value;
+            }
+        }
     }
 }

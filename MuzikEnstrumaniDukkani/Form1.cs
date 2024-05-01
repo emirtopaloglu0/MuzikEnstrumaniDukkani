@@ -1,6 +1,7 @@
 ﻿using MuzikEnstrumaniDukkani.Class;
 using MuzikEnstrumaniDukkani.Mesajlar;
 using MuzikEnstrumaniDukkani.Model;
+using MuzikEnstrumaniDukkani.Properties;
 using MuzikEnstrumaniDukkani.View.Other;
 using System;
 using System.Collections.Generic;
@@ -20,10 +21,14 @@ namespace MuzikEnstrumaniDukkani
 
         public char[] charsToTrim = { '*', ' ', '\'', '_', '-', '+', '$', '!', '^', '#', '%', '&', '/', '?', '(', ')', '=', '<', '>', '|', '£', '½', '{', '[', ']', '}' };
 
-        
+        public string pool = "abcdefghijklmnopqrstuvwyxzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+
+        public List<int> Cart = new List<int>();
+
         public Form1()
         {
             InitializeComponent();
+
         }
 
         private void ExitBtn_Click(object sender, EventArgs e)
@@ -39,6 +44,9 @@ namespace MuzikEnstrumaniDukkani
         {
             customerPanel1.Hide();
             adminPanel1.Hide();
+            Settings.Default.UserId = 0;
+            Settings.Default.Save();
+
         }
 
         private void LoginBtn_Click(object sender, EventArgs e)
@@ -55,6 +63,7 @@ namespace MuzikEnstrumaniDukkani
                     else
                     {
                         customerPanel1.Show();
+                        //customerPanel1.instance.LoadOrdersData();
                         adminPanel1.Hide();
                     }
                     pictureBox2.Dispose(); //giriş yapılırsa kaybolacak
@@ -66,14 +75,14 @@ namespace MuzikEnstrumaniDukkani
             {
                 HataliMesaj.CatchError(ex);
             }
-            
+
         }
 
         private void RegisterBtn_Click(object sender, EventArgs e)
         {
             try
             {
-                pictureBox2.Hide(); 
+                pictureBox2.Hide();
                 KayitForm f2 = new KayitForm();
                 f2.ShowDialog();
             }
@@ -102,7 +111,7 @@ namespace MuzikEnstrumaniDukkani
 
         private void Pass_TextBox_KeyDown(object sender, KeyEventArgs e)
         {
-            if((e.KeyCode == Keys.Enter))
+            if ((e.KeyCode == Keys.Enter))
             {
                 LoginBtn_Click(sender, e);
             }
