@@ -73,6 +73,16 @@ namespace MuzikEnstrumaniDukkani.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap logout1 {
+            get {
+                object obj = ResourceManager.GetObject("logout1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap music_shop {
             get {
                 object obj = ResourceManager.GetObject("music-shop", resourceCulture);
@@ -96,6 +106,16 @@ namespace MuzikEnstrumaniDukkani.Properties {
         internal static System.Drawing.Bitmap musical {
             get {
                 object obj = ResourceManager.GetObject("musical", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap synchronize {
+            get {
+                object obj = ResourceManager.GetObject("synchronize", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

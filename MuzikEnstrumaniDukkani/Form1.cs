@@ -58,6 +58,8 @@ namespace MuzikEnstrumaniDukkani
                         adminPanel1.Hide();
                     }
                     pictureBox2.Dispose(); //giriş yapılırsa kaybolacak
+                    User_TextBox.Text = "";
+                    Pass_TextBox.Text = "";
                 }
             }
             catch (Exception ex)
@@ -96,6 +98,34 @@ namespace MuzikEnstrumaniDukkani
             {
                 Pass_TextBox.PasswordChar = '*';
             }
+        }
+
+        private void Pass_TextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if((e.KeyCode == Keys.Enter))
+            {
+                LoginBtn_Click(sender, e);
+            }
+        }
+
+        private void User_TextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if ((e.KeyCode == Keys.Enter))
+            {
+                LoginBtn_Click(sender, e);
+            }
+        }
+
+        public void LogOut()
+        {
+            adminPanel1.Hide();
+            customerPanel1.Hide();
+        }
+
+        private void Restart_Button(object sender, EventArgs e)
+        {
+            Application.Restart();
+            Environment.Exit(0);
         }
     }
 }

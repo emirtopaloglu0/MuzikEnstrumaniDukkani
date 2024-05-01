@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.LoginPanel = new System.Windows.Forms.Panel();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -41,10 +42,11 @@
             this.LoginBtn = new System.Windows.Forms.Button();
             this.ExitBtn = new System.Windows.Forms.Button();
             this.Workspace = new System.Windows.Forms.Panel();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.customerPanel1 = new MuzikEnstrumaniDukkani.View.Customer.CustomerPanel();
             this.adminPanel1 = new MuzikEnstrumaniDukkani.View.Admin.AdminPanel();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.LoginPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.Workspace.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -52,6 +54,7 @@
             // 
             // LoginPanel
             // 
+            this.LoginPanel.Controls.Add(this.pictureBox3);
             this.LoginPanel.Controls.Add(this.checkBox1);
             this.LoginPanel.Controls.Add(this.pictureBox1);
             this.LoginPanel.Controls.Add(this.label2);
@@ -66,6 +69,18 @@
             this.LoginPanel.Name = "LoginPanel";
             this.LoginPanel.Size = new System.Drawing.Size(244, 696);
             this.LoginPanel.TabIndex = 0;
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBox3.Image = global::MuzikEnstrumaniDukkani.Properties.Resources.synchronize;
+            this.pictureBox3.Location = new System.Drawing.Point(9, 640);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(55, 50);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox3.TabIndex = 33;
+            this.pictureBox3.TabStop = false;
+            this.pictureBox3.Click += new System.EventHandler(this.Restart_Button);
             // 
             // checkBox1
             // 
@@ -127,6 +142,7 @@
             this.Pass_TextBox.PasswordChar = '*';
             this.Pass_TextBox.Size = new System.Drawing.Size(161, 30);
             this.Pass_TextBox.TabIndex = 2;
+            this.Pass_TextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Pass_TextBox_KeyDown);
             // 
             // User_TextBox
             // 
@@ -135,6 +151,7 @@
             this.User_TextBox.Name = "User_TextBox";
             this.User_TextBox.Size = new System.Drawing.Size(161, 30);
             this.User_TextBox.TabIndex = 1;
+            this.User_TextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.User_TextBox_KeyDown);
             // 
             // RegisterBtn
             // 
@@ -167,9 +184,9 @@
             this.ExitBtn.BackColor = System.Drawing.Color.Red;
             this.ExitBtn.Font = new System.Drawing.Font("Figtree Medium", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.ExitBtn.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.ExitBtn.Location = new System.Drawing.Point(12, 643);
+            this.ExitBtn.Location = new System.Drawing.Point(74, 640);
             this.ExitBtn.Name = "ExitBtn";
-            this.ExitBtn.Size = new System.Drawing.Size(214, 50);
+            this.ExitBtn.Size = new System.Drawing.Size(167, 53);
             this.ExitBtn.TabIndex = 5;
             this.ExitBtn.Text = "ÇIKIŞ";
             this.ExitBtn.UseVisualStyleBackColor = false;
@@ -185,16 +202,6 @@
             this.Workspace.Size = new System.Drawing.Size(1006, 696);
             this.Workspace.TabIndex = 0;
             // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Image = global::MuzikEnstrumaniDukkani.Properties.Resources.image_processing20210906_19740_11zwxia;
-            this.pictureBox2.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(1006, 696);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox2.TabIndex = 10;
-            this.pictureBox2.TabStop = false;
-            // 
             // customerPanel1
             // 
             this.customerPanel1.Location = new System.Drawing.Point(3, 3);
@@ -208,6 +215,16 @@
             this.adminPanel1.Name = "adminPanel1";
             this.adminPanel1.Size = new System.Drawing.Size(1000, 690);
             this.adminPanel1.TabIndex = 0;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::MuzikEnstrumaniDukkani.Properties.Resources.image_processing20210906_19740_11zwxia;
+            this.pictureBox2.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(1006, 696);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 10;
+            this.pictureBox2.TabStop = false;
             // 
             // Form1
             // 
@@ -224,6 +241,7 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             this.LoginPanel.ResumeLayout(false);
             this.LoginPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.Workspace.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
@@ -248,6 +266,7 @@
         private View.Customer.CustomerPanel customerPanel1;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.PictureBox pictureBox3;
     }
 }
 

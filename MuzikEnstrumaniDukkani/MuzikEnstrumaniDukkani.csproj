@@ -113,11 +113,41 @@
     <Compile Include="View\Admin\AdminPanel.Designer.cs">
       <DependentUpon>AdminPanel.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\Admin\InstrumentPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\Admin\InstrumentPanel.Designer.cs">
+      <DependentUpon>InstrumentPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Admin\OrderPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\Admin\OrderPanel.Designer.cs">
+      <DependentUpon>OrderPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Admin\SupportPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\Admin\SupportPanel.Designer.cs">
+      <DependentUpon>SupportPanel.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Customer\CustomerPanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="View\Customer\CustomerPanel.Designer.cs">
       <DependentUpon>CustomerPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Other\EnstrumanDuzenle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Other\EnstrumanDuzenle.Designer.cs">
+      <DependentUpon>EnstrumanDuzenle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Other\EnstrumanEkle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Other\EnstrumanEkle.Designer.cs">
+      <DependentUpon>EnstrumanEkle.cs</DependentUpon>
     </Compile>
     <Compile Include="View\Other\KayitForm.cs">
       <SubType>Form</SubType>
@@ -141,8 +171,23 @@
     <EmbeddedResource Include="View\Admin\AdminPanel.resx">
       <DependentUpon>AdminPanel.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\Admin\InstrumentPanel.resx">
+      <DependentUpon>InstrumentPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Admin\OrderPanel.resx">
+      <DependentUpon>OrderPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Admin\SupportPanel.resx">
+      <DependentUpon>SupportPanel.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\Customer\CustomerPanel.resx">
       <DependentUpon>CustomerPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Other\EnstrumanDuzenle.resx">
+      <DependentUpon>EnstrumanDuzenle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Other\EnstrumanEkle.resx">
+      <DependentUpon>EnstrumanEkle.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Other\KayitForm.resx">
       <DependentUpon>KayitForm.cs</DependentUpon>
@@ -155,6 +200,9 @@
       <DependentUpon>Model1.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\MuzikEnstrumaniDukkani.Model.Destek_Talepleri.datasource" />
+    <None Include="Properties\DataSources\MuzikEnstrumaniDukkani.Model.Enstrumanlar.datasource" />
+    <None Include="Properties\DataSources\MuzikEnstrumaniDukkani.Model.Siparisler.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -192,6 +240,8 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\synchronize.png" />
+    <None Include="Resources\logout1.png" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

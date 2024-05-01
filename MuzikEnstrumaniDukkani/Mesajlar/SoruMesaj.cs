@@ -22,5 +22,20 @@ namespace MuzikEnstrumaniDukkani.Mesajlar
         {
             res = MessageBox.Show("Kayıt Olmak İstediğinze Emin Misiniz?", "Dikkat!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
         }
+        internal void EnstrumanEkle()
+        {
+            res = MessageBox.Show("Enstrümanı Eklemek İstediğinze Emin Misiniz?", "Dikkat!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+        }
+
+        internal void GuncelleSoru()
+        {
+            res = MessageBox.Show("Güncellemek İstediğinze Emin Misiniz?", "Dikkat!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+        }
+
+        internal void SilSoru()
+        {
+            res = MessageBox.Show("Silmek İstediğinze Emin Misiniz?", "Dikkat!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+        }
     }
 }
