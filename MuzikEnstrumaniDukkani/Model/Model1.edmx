@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="MuzikEnstrumaniDukkaniModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="MuzikEnstrumaniDukkaniModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Destek_Kategorileri">
           <Key>
             <PropertyRef Name="Id" />
@@ -25,6 +25,7 @@
           <Property Name="Isleme_Alindi" Type="bit" Nullable="false" />
           <Property Name="Tamamlandi" Type="bit" Nullable="false" />
           <Property Name="Aktif" Type="bit" Nullable="false" />
+          <Property Name="Talep_Tarihi" Type="date" Nullable="false" />
         </EntityType>
         <EntityType Name="Enstruman_Kategorileri">
           <Key>
@@ -184,8 +185,7 @@ warning 6035: The relationship 'FK_Siparis_Detay_Siparisler' has columns that ar
             <End Role="Siparisler" EntitySet="Siparisler" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="MuzikEnstrumaniDukkaniModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -212,6 +212,7 @@ warning 6035: The relationship 'FK_Siparis_Detay_Siparisler' has columns that ar
           <Property Name="Aktif" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Destek_Kategorileri" Relationship="Self.FK_Destek_Talepleri_Destek_Kategorileri" FromRole="Destek_Talepleri" ToRole="Destek_Kategorileri" />
           <NavigationProperty Name="Siparisler" Relationship="Self.FK_Destek_Talepleri_Siparisler" FromRole="Destek_Talepleri" ToRole="Siparisler" />
+          <Property Name="Talep_Tarihi" Type="DateTime" Nullable="false" Precision="0" />
         </EntityType>
         <EntityType Name="Enstruman_Kategorileri">
           <Key>
@@ -392,6 +393,7 @@ warning 6035: The relationship 'FK_Siparis_Detay_Siparisler' has columns that ar
           <EntitySetMapping Name="Destek_Talepleri">
             <EntityTypeMapping TypeName="MuzikEnstrumaniDukkaniModel.Destek_Talepleri">
               <MappingFragment StoreEntitySet="Destek_Talepleri">
+                <ScalarProperty Name="Talep_Tarihi" ColumnName="Talep_Tarihi" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Siparis_Id" ColumnName="Siparis_Id" />
                 <ScalarProperty Name="Destek_Kategori_Id" ColumnName="Destek_Kategori_Id" />

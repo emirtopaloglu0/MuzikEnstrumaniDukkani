@@ -38,5 +38,10 @@ namespace MuzikEnstrumaniDukkani.Mesajlar
         {
             MessageBox.Show("Siparişiniz Başarılı Bir Şekilde İptal Edildi", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
+
+        internal static void DestekOlustu()
+        {
+            MessageBox.Show("Destek Talebiniz Başarıyla oluşturuldu.", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
     }
 }

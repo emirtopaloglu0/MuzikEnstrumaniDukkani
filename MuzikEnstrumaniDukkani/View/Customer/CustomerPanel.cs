@@ -21,7 +21,7 @@ namespace MuzikEnstrumaniDukkani.View.Customer
         private void CustomerPanel_Load(object sender, EventArgs e)
         {
             customerCartPanel1.Hide();
-            customerOrdersPanel1.Show();
+            customerOrdersPanel1.Hide();
             customerPurchasePanel1.Hide();
             customerSupportPanel1.Hide();
         }
@@ -58,6 +58,7 @@ namespace MuzikEnstrumaniDukkani.View.Customer
             customerOrdersPanel1.Hide();
             customerPurchasePanel1.Hide();
             customerSupportPanel1.Show();
+            customerSupportPanel1.LoadData();
         }
 
         public void LoadOrdersData()

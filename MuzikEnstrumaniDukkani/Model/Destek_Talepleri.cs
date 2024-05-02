@@ -23,6 +23,7 @@ namespace MuzikEnstrumaniDukkani.Model
         public bool Isleme_Alindi { get; set; }
         public bool Tamamlandi { get; set; }
         public bool Aktif { get; set; }
+        public System.DateTime Talep_Tarihi { get; set; }
     
         public virtual Destek_Kategorileri Destek_Kategorileri { get; set; }
         public virtual Siparisler Siparisler { get; set; }
