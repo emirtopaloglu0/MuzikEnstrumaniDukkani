@@ -154,6 +154,7 @@
             this.Purch_Btn.TabIndex = 18;
             this.Purch_Btn.Text = "Seçili Siparişi İptal Et";
             this.Purch_Btn.UseVisualStyleBackColor = false;
+            this.Purch_Btn.Click += new System.EventHandler(this.Cancel_Purch_Btn_Click);
             // 
             // button1
             // 

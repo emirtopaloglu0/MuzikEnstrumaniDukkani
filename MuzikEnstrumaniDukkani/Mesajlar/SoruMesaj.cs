@@ -42,5 +42,10 @@ namespace MuzikEnstrumaniDukkani.Mesajlar
         {
             res = MessageBox.Show("Seçili Ürünü Satın Almak İstediğinize Emin Misiniz?", "Dikkat!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
         }
+
+        internal void SiparisIptal()
+        {
+            res = MessageBox.Show("Siparişinizi İptal Etmek İstediğinze Emin Misiniz?", "Dikkat!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+        }
     }
 }

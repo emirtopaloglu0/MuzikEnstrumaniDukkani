@@ -31,6 +31,14 @@
             this.components = new System.ComponentModel.Container();
             this.button1 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.ıdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.adDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.kategoriIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.uretimYeriDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.stokDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fiyatDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Adet = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.enstrumanlarBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.Cat_ComboBox = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -47,14 +55,6 @@
             this.Confirm_Total_Btn = new System.Windows.Forms.Button();
             this.Toplam_TextBox = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.Adet = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ıdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.adDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.kategoriIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.uretimYeriDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.stokDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.fiyatDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.enstrumanlarBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.enstrumanlarBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -93,6 +93,60 @@
             this.dataGridView1.Size = new System.Drawing.Size(624, 604);
             this.dataGridView1.TabIndex = 18;
             this.dataGridView1.SelectionChanged += new System.EventHandler(this.dataGridView1_SelectionChanged);
+            // 
+            // ıdDataGridViewTextBoxColumn
+            // 
+            this.ıdDataGridViewTextBoxColumn.DataPropertyName = "Id";
+            this.ıdDataGridViewTextBoxColumn.HeaderText = "Id";
+            this.ıdDataGridViewTextBoxColumn.Name = "ıdDataGridViewTextBoxColumn";
+            this.ıdDataGridViewTextBoxColumn.ReadOnly = true;
+            this.ıdDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // adDataGridViewTextBoxColumn
+            // 
+            this.adDataGridViewTextBoxColumn.DataPropertyName = "Ad";
+            this.adDataGridViewTextBoxColumn.HeaderText = "Ad";
+            this.adDataGridViewTextBoxColumn.Name = "adDataGridViewTextBoxColumn";
+            this.adDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // kategoriIdDataGridViewTextBoxColumn
+            // 
+            this.kategoriIdDataGridViewTextBoxColumn.DataPropertyName = "Kategori_Id";
+            this.kategoriIdDataGridViewTextBoxColumn.HeaderText = "Kategori_Id";
+            this.kategoriIdDataGridViewTextBoxColumn.Name = "kategoriIdDataGridViewTextBoxColumn";
+            this.kategoriIdDataGridViewTextBoxColumn.ReadOnly = true;
+            this.kategoriIdDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // uretimYeriDataGridViewTextBoxColumn
+            // 
+            this.uretimYeriDataGridViewTextBoxColumn.DataPropertyName = "Uretim_Yeri";
+            this.uretimYeriDataGridViewTextBoxColumn.HeaderText = "Uretim_Yeri";
+            this.uretimYeriDataGridViewTextBoxColumn.Name = "uretimYeriDataGridViewTextBoxColumn";
+            this.uretimYeriDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // stokDataGridViewTextBoxColumn
+            // 
+            this.stokDataGridViewTextBoxColumn.DataPropertyName = "Stok";
+            this.stokDataGridViewTextBoxColumn.HeaderText = "Stok";
+            this.stokDataGridViewTextBoxColumn.Name = "stokDataGridViewTextBoxColumn";
+            this.stokDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // fiyatDataGridViewTextBoxColumn
+            // 
+            this.fiyatDataGridViewTextBoxColumn.DataPropertyName = "Fiyat";
+            this.fiyatDataGridViewTextBoxColumn.HeaderText = "Fiyat";
+            this.fiyatDataGridViewTextBoxColumn.Name = "fiyatDataGridViewTextBoxColumn";
+            this.fiyatDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // Adet
+            // 
+            this.Adet.HeaderText = "Adet";
+            this.Adet.Name = "Adet";
+            this.Adet.ReadOnly = true;
+            // 
+            // enstrumanlarBindingSource
+            // 
+            this.enstrumanlarBindingSource.DataSource = typeof(MuzikEnstrumaniDukkani.Model.Enstrumanlar);
             // 
             // Cat_ComboBox
             // 
@@ -272,60 +326,6 @@
             this.label7.TabIndex = 66;
             this.label7.Text = "Toplam";
             // 
-            // Adet
-            // 
-            this.Adet.HeaderText = "Adet";
-            this.Adet.Name = "Adet";
-            this.Adet.ReadOnly = true;
-            // 
-            // ıdDataGridViewTextBoxColumn
-            // 
-            this.ıdDataGridViewTextBoxColumn.DataPropertyName = "Id";
-            this.ıdDataGridViewTextBoxColumn.HeaderText = "Id";
-            this.ıdDataGridViewTextBoxColumn.Name = "ıdDataGridViewTextBoxColumn";
-            this.ıdDataGridViewTextBoxColumn.ReadOnly = true;
-            this.ıdDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // adDataGridViewTextBoxColumn
-            // 
-            this.adDataGridViewTextBoxColumn.DataPropertyName = "Ad";
-            this.adDataGridViewTextBoxColumn.HeaderText = "Ad";
-            this.adDataGridViewTextBoxColumn.Name = "adDataGridViewTextBoxColumn";
-            this.adDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // kategoriIdDataGridViewTextBoxColumn
-            // 
-            this.kategoriIdDataGridViewTextBoxColumn.DataPropertyName = "Kategori_Id";
-            this.kategoriIdDataGridViewTextBoxColumn.HeaderText = "Kategori_Id";
-            this.kategoriIdDataGridViewTextBoxColumn.Name = "kategoriIdDataGridViewTextBoxColumn";
-            this.kategoriIdDataGridViewTextBoxColumn.ReadOnly = true;
-            this.kategoriIdDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // uretimYeriDataGridViewTextBoxColumn
-            // 
-            this.uretimYeriDataGridViewTextBoxColumn.DataPropertyName = "Uretim_Yeri";
-            this.uretimYeriDataGridViewTextBoxColumn.HeaderText = "Uretim_Yeri";
-            this.uretimYeriDataGridViewTextBoxColumn.Name = "uretimYeriDataGridViewTextBoxColumn";
-            this.uretimYeriDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // stokDataGridViewTextBoxColumn
-            // 
-            this.stokDataGridViewTextBoxColumn.DataPropertyName = "Stok";
-            this.stokDataGridViewTextBoxColumn.HeaderText = "Stok";
-            this.stokDataGridViewTextBoxColumn.Name = "stokDataGridViewTextBoxColumn";
-            this.stokDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // fiyatDataGridViewTextBoxColumn
-            // 
-            this.fiyatDataGridViewTextBoxColumn.DataPropertyName = "Fiyat";
-            this.fiyatDataGridViewTextBoxColumn.HeaderText = "Fiyat";
-            this.fiyatDataGridViewTextBoxColumn.Name = "fiyatDataGridViewTextBoxColumn";
-            this.fiyatDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // enstrumanlarBindingSource
-            // 
-            this.enstrumanlarBindingSource.DataSource = typeof(MuzikEnstrumaniDukkani.Model.Enstrumanlar);
-            // 
             // CustomerCartPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -361,7 +361,6 @@
         #endregion
 
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.BindingSource enstrumanlarBindingSource;
         private System.Windows.Forms.ComboBox Cat_ComboBox;
         private System.Windows.Forms.Label label6;
@@ -386,5 +385,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn stokDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn fiyatDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn Adet;
+        public System.Windows.Forms.DataGridView dataGridView1;
     }
 }

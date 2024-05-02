@@ -34,6 +34,11 @@ namespace MuzikEnstrumaniDukkani.Mesajlar
             MessageBox.Show("Yazdığınız kullanıcı adı alınmıştır. Lütfen başka bir kullanıcı adı seçiniz.!", "Hata!", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
+        internal static void SatiriSeciniz()
+        {
+            MessageBox.Show("Satırı düzgün seçiniz!", "Hata!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
         internal static void SepetteVar()
         {
             MessageBox.Show("Eklemeye çalıştığınız ürün zaten sepetinizde bulunuyor!", "Hata!", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -42,6 +47,11 @@ namespace MuzikEnstrumaniDukkani.Mesajlar
         internal static void SifreYanlis()
         {
             MessageBox.Show("Hatalı şifre! Lütfen tekrar deneyin.", "Hata!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        internal static void SiparisZamanAsimi()
+        {
+            MessageBox.Show("Siparişinizin üstünden 3 gün geçtiği için iptal edemezsiniz!", "Dikkat!", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         internal static void StokHatasi()

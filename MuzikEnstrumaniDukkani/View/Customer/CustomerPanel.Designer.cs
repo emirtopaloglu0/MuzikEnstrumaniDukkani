@@ -43,12 +43,11 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Figtree Medium", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label1.Location = new System.Drawing.Point(19, 595);
+            this.label1.Location = new System.Drawing.Point(16, 641);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(248, 92);
+            this.label1.Size = new System.Drawing.Size(248, 46);
             this.label1.TabIndex = 11;
-            this.label1.Text = "SİPARİŞLERİYLE İLGİLİ \r\nDESTEK OLUŞTURABİLİR\r\nSİPARİŞİ 3 GÜN İÇİNDE \r\nİPTAL EDEBİ" +
-    "LİR";
+            this.label1.Text = "SİPARİŞLERİYLE İLGİLİ \r\nDESTEK OLUŞTURABİLİR";
             // 
             // View_Purc
             // 

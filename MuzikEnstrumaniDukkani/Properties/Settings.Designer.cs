@@ -57,5 +57,17 @@ namespace MuzikEnstrumaniDukkani.Properties {
                 this["UserId"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string Siparis_No {
+            get {
+                return ((string)(this["Siparis_No"]));
+            }
+            set {
+                this["Siparis_No"] = value;
+            }
+        }
     }
 }

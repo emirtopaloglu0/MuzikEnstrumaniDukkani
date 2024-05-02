@@ -13,12 +13,14 @@ using MuzikEnstrumaniDukkani.Properties;
 using MuzikEnstrumaniDukkani.Model;
 using MuzikEnstrumaniDukkani.Mesajlar;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Rebar;
+using System.Runtime.InteropServices;
 
 namespace MuzikEnstrumaniDukkani.View.Customer
 {
     public partial class CustomerCartPanel : UserControl
     {
         int id;
+        public static CustomerCartPanel instance = new CustomerCartPanel();
 
         public CustomerCartPanel()
         {
@@ -64,51 +66,14 @@ namespace MuzikEnstrumaniDukkani.View.Customer
 
             }
         }
-
         int toplam_Adet = 0;
-        Random rand = new Random();
-
 
         private void Purch_Btn_Click(object sender, EventArgs e)
         {
-            try
+            if (C_Orders.instance.ConfirmCart(Convert.ToInt32(Toplam_TextBox.Text)))
             {
-
-            //satın alım classına yolla, sipariş noyu oto oluştur ve kontrol et var mı yok mu diye.
-            again:
-                var pool = Form1.instance.pool;
-
-                char[] chars = new char[10];
-                for (int i = 0; i < 10; i++)
+                try
                 {
-                    chars[i] = pool[rand.Next(pool.Length)];
-                }
-
-                string charsStr = new string(chars);
-                //MessageBox.Show(charsStr);
-
-                var sip_No = DB_Connection.db.Siparisler.FirstOrDefault(x => x.Siparis_No == charsStr);
-
-
-
-                if (sip_No == null)
-                {
-
-
-                    Siparisler siparisler = new Siparisler();
-                    siparisler.Siparis_No = charsStr;
-                    siparisler.Musteri_Id = Settings.Default.UserId;
-                    siparisler.Tutar = Convert.ToInt32(Toplam_TextBox.Text);
-                    siparisler.Siparis_Tarihi = DateTime.Now;
-                    siparisler.Aktif = true;
-                    siparisler.Iptal = false;
-                    siparisler.Tamamlandi = false;
-
-                    DB_Connection.db.Siparisler.Add(siparisler);
-                    DB_Connection.db.SaveChanges();
-
-                    Siparis_Detay siparis = new Siparis_Detay();
-
                     foreach (DataGridViewRow row in dataGridView1.Rows)
                     {
                         var id = Convert.ToInt32(row.Cells["ıdDataGridViewTextBoxColumn"].Value);
@@ -142,31 +107,25 @@ namespace MuzikEnstrumaniDukkani.View.Customer
 
                         }
 
+                        Siparis_Detay siparis = new Siparis_Detay();
+
                         siparis.Enstruman_Id = id;
-                        siparis.Siparis_No = charsStr;
+                        siparis.Siparis_No = Settings.Default.Siparis_No;
                         siparis.Adet = toplam_Adet;
                         DB_Connection.db.Siparis_Detay.Add(siparis);
                         DB_Connection.db.SaveChanges();
                     }
-
+                    BasariliMesaj.SatinAlim();
+                    Clear_Cart(null, null);
+                }
+                catch
+                {
 
                 }
-                else
-                    goto again;
-
-
-                BasariliMesaj.SatinAlim();
-
-                Clear_Cart(null, null);
 
 
 
             }
-            catch
-            {
-
-            }
-
         }
 
         public void LoadData()

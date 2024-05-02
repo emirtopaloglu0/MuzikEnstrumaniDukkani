@@ -33,5 +33,10 @@ namespace MuzikEnstrumaniDukkani.Mesajlar
             MessageBox.Show("Sipariş Başarıyla Oluşturulmuştur!\nSiparişinizi 3 gün içerisinde iptal edebilirsiniz." +
                 "\nEğer iptal edilmezse teslimat yapılacaktır\nİyi günlerde kullanın!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
+
+        internal static void SiparisIptalEdildi()
+        {
+            MessageBox.Show("Siparişiniz Başarılı Bir Şekilde İptal Edildi", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
     }
 }
