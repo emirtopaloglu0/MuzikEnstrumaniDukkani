@@ -34,6 +34,7 @@ namespace MuzikEnstrumaniDukkani.View.Admin
             ınstrumentPanel1.Hide();
             supportPanel1.Hide();
             orderPanel1.Show();
+            orderPanel1.LoadData();
         }
 
         private void View_Tickets_Click(object sender, EventArgs e)
@@ -41,6 +42,7 @@ namespace MuzikEnstrumaniDukkani.View.Admin
             ınstrumentPanel1.Hide();
             supportPanel1.Show();
             orderPanel1.Hide();
+            supportPanel1.LoadData();
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)

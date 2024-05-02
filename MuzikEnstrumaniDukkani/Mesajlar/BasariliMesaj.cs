@@ -43,5 +43,19 @@ namespace MuzikEnstrumaniDukkani.Mesajlar
         {
             MessageBox.Show("Destek Talebiniz Başarıyla oluşturuldu.", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
+
+        internal static void CevapGonderildi()
+        {
+            MessageBox.Show("Cevabınız Gönderildi", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        internal static void IslemeAlindi()
+        {
+            MessageBox.Show("Talep işleme alındı", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+        internal static void Tamamlandı()
+        {
+            MessageBox.Show("Talep işleme tamamlandı", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
     }
 }

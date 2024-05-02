@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MuzikEnstrumaniDukkani.Class;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,13 @@ namespace MuzikEnstrumaniDukkani.View.Admin
         public OrderPanel()
         {
             InitializeComponent();
+        }
+
+
+        public void LoadData()
+        {
+            var orders = DB_Connection.db.Siparisler.ToList();
+            dataGridView1.DataSource = orders;
         }
     }
 }
