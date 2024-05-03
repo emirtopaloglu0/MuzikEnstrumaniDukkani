@@ -40,24 +40,20 @@ namespace MuzikEnstrumaniDukkani.View.Other
 
         private void Register_Btn_Click(object sender, EventArgs e)
         {
-            try
+
+            SoruMesaj.instance.GuncelleSoru();
+            if (SoruMesaj.instance.res == DialogResult.Yes)
             {
-                SoruMesaj.instance.GuncelleSoru();
-                if (SoruMesaj.instance.res == DialogResult.Yes)
+                if (C_Instruments.instance.EditIns(id, Name_TextBox.Text, UretimYeri_TextBox.Text,
+                    Cat_ComboBox.SelectedIndex + 1, Int32.Parse(Stok_TextBox.Text),
+                    Int32.Parse(Fiyat_TextBox.Text)))
                 {
-                    if (C_Instruments.instance.EditIns(id, Name_TextBox.Text, UretimYeri_TextBox.Text,
-                        Cat_ComboBox.SelectedIndex + 1, Int32.Parse(Stok_TextBox.Text),
-                        Int32.Parse(Fiyat_TextBox.Text)))
-                    {
-                        BasariliMesaj.GuncellmeBasarili();
-                        Close();
-                    }
+                    BasariliMesaj.GuncellmeBasarili();
+                    Close();
                 }
             }
-            catch (Exception ex)
-            {
-                HataliMesaj.CatchError(ex);
-            }
+
+
         }
 
         private void EnstrumanDuzenle_Load(object sender, EventArgs e)

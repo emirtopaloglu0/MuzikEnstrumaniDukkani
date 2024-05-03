@@ -69,7 +69,6 @@ namespace MuzikEnstrumaniDukkani.Class
             return false;
         }
 
-
         public bool Register(string name, string surname, string username,
             string pass, string mail, char gender, string address)
         {

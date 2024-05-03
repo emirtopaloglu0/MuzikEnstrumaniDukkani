@@ -61,7 +61,7 @@ namespace MuzikEnstrumaniDukkani.View.Customer
             if (order != null)
             {
                 //var dt = Convert.ToDateTime(order.Siparis_Tarihi);
-                if (DateTime.Today >= order.Siparis_Tarihi.Date.AddDays(3))
+                if (DateTime.Now <= order.Siparis_Tarihi.Date.AddDays(3))
                 {
                     SoruMesaj.instance.SiparisIptal();
                     if (SoruMesaj.instance.res == DialogResult.Yes)
