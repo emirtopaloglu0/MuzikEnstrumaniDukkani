@@ -10,7 +10,8 @@ Projenin iki tarafı vardır. Admin ve Müşteri.
 
 ![soluton explorer](https://github.com/emirtopaloglu0/MuzikEnstrumaniDukkani/assets/147405225/1727994f-86d8-47a0-a6a6-395f194603d7)
 
-## Uygulama
+## Uygulama İçinden Görüntüler
+Aşağıda uygulamadan alınmış ekran görüntüleri bulunmaktadır.
 ### Ana Sayfa
 
 ![ana sayfa](https://github.com/emirtopaloglu0/MuzikEnstrumaniDukkani/assets/147405225/45b2bb65-cdcf-44ba-804c-7e0d1ea73877)
