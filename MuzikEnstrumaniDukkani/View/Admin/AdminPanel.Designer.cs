@@ -35,9 +35,7 @@
             this.supportPanel1 = new MuzikEnstrumaniDukkani.View.Admin.SupportPanel();
             this.View_Orders = new System.Windows.Forms.Button();
             this.View_Tickets = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // View_Ins
@@ -111,23 +109,10 @@
             this.View_Tickets.UseVisualStyleBackColor = false;
             this.View_Tickets.Click += new System.EventHandler(this.View_Tickets_Click);
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBox1.Image = global::MuzikEnstrumaniDukkani.Properties.Resources.logout1;
-            this.pictureBox1.Location = new System.Drawing.Point(3, 652);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(54, 35);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 11;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
-            // 
             // AdminPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.View_Tickets);
             this.Controls.Add(this.View_Orders);
@@ -135,7 +120,6 @@
             this.Name = "AdminPanel";
             this.Size = new System.Drawing.Size(1000, 690);
             this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -148,6 +132,5 @@
         private SupportPanel supportPanel1;
         private OrderPanel orderPanel1;
         private InstrumentPanel ınstrumentPanel1;
-        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

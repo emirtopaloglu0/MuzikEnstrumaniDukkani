@@ -67,8 +67,8 @@ namespace MuzikEnstrumaniDukkani
                         adminPanel1.Hide();
                     }
                     pictureBox2.Dispose(); //giriş yapılırsa kaybolacak
-                    User_TextBox.Text = "";
-                    Pass_TextBox.Text = "";
+                    User_TextBox.Enabled = false;
+                    Pass_TextBox.Enabled = false;
                 }
             }
             catch (Exception ex)

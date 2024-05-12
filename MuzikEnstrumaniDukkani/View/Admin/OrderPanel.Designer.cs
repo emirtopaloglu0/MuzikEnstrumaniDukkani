@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.siparislerBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.ıdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.siparisNoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.musteriIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -42,8 +43,6 @@
             this.teslimTarihiDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ıptalTarihiDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.destekTalepleriDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.musterilerDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.siparislerBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.siparislerBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -75,14 +74,17 @@
             this.tamamlandiDataGridViewCheckBoxColumn,
             this.teslimTarihiDataGridViewTextBoxColumn,
             this.ıptalTarihiDataGridViewTextBoxColumn,
-            this.destekTalepleriDataGridViewTextBoxColumn,
-            this.musterilerDataGridViewTextBoxColumn});
+            this.destekTalepleriDataGridViewTextBoxColumn});
             this.dataGridView1.DataSource = this.siparislerBindingSource;
             this.dataGridView1.Location = new System.Drawing.Point(7, 26);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.Size = new System.Drawing.Size(980, 546);
             this.dataGridView1.TabIndex = 12;
+            // 
+            // siparislerBindingSource
+            // 
+            this.siparislerBindingSource.DataSource = typeof(MuzikEnstrumaniDukkani.Model.Siparisler);
             // 
             // ıdDataGridViewTextBoxColumn
             // 
@@ -166,17 +168,6 @@
             this.destekTalepleriDataGridViewTextBoxColumn.Name = "destekTalepleriDataGridViewTextBoxColumn";
             this.destekTalepleriDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // musterilerDataGridViewTextBoxColumn
-            // 
-            this.musterilerDataGridViewTextBoxColumn.DataPropertyName = "Musteriler";
-            this.musterilerDataGridViewTextBoxColumn.HeaderText = "Musteriler";
-            this.musterilerDataGridViewTextBoxColumn.Name = "musterilerDataGridViewTextBoxColumn";
-            this.musterilerDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // siparislerBindingSource
-            // 
-            this.siparislerBindingSource.DataSource = typeof(MuzikEnstrumaniDukkani.Model.Siparisler);
-            // 
             // OrderPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -196,6 +187,7 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.BindingSource siparislerBindingSource;
         private System.Windows.Forms.DataGridViewTextBoxColumn ıdDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn siparisNoDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn musteriIdDataGridViewTextBoxColumn;
@@ -207,7 +199,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn teslimTarihiDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn ıptalTarihiDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn destekTalepleriDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn musterilerDataGridViewTextBoxColumn;
-        private System.Windows.Forms.BindingSource siparislerBindingSource;
     }
 }
