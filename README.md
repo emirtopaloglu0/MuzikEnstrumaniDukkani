@@ -11,14 +11,14 @@ Projenin iki tarafı vardır. Admin ve Müşteri.
 ![soluton explorer](https://github.com/emirtopaloglu0/MuzikEnstrumaniDukkani/assets/147405225/1727994f-86d8-47a0-a6a6-395f194603d7)
 
 ## Uygulama
-**Ana Sayfa**
+### Ana Sayfa
 
 ![ana sayfa](https://github.com/emirtopaloglu0/MuzikEnstrumaniDukkani/assets/147405225/45b2bb65-cdcf-44ba-804c-7e0d1ea73877)
 
-**Müşteri Paneli**
+### Müşteri Paneli
 
 ![Musteri](https://github.com/emirtopaloglu0/MuzikEnstrumaniDukkani/assets/147405225/326e303c-d43d-4180-9c1a-55ed57f88802)
 
-**Admin Paneli**
+### Admin Paneli
 
 ![Admin](https://github.com/emirtopaloglu0/MuzikEnstrumaniDukkani/assets/147405225/01006640-628d-4939-bd4d-99a6b14abd24)
