@@ -202,7 +202,7 @@
             this.button2.TabIndex = 15;
             this.button2.Text = "Seçili Sorunu \"İşleme Alındı\" Olarak İşaretle";
             this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.button2.Click += new System.EventHandler(this.IslemeAlindi_Btn_Click);
             // 
             // SupportPanel
             // 

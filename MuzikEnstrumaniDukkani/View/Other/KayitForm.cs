@@ -32,7 +32,7 @@ namespace MuzikEnstrumaniDukkani.View.Other
             }
         }
 
-        private void TextChanged(object sender, EventArgs e)
+        private void TextBoxTextChanged(object sender, EventArgs e)
         {
             TextBox textbox = sender as TextBox;
 
@@ -45,35 +45,33 @@ namespace MuzikEnstrumaniDukkani.View.Other
         private void Register_Btn_Click(object sender, EventArgs e)
         {
             SoruMesaj.instance.KayitEminMisin();
-            if (SoruMesaj.instance.res == DialogResult.Yes)
+            if (SoruMesaj.instance.res != DialogResult.Yes)
+            { return; }
+
+            if (Name_TextBox != null && LastName_TextBox != null && Username_Textbox != null
+            && Password_Textbox != null && Mail_TextBox != null 
+            && (Male_RadioBtn.Checked || Female_RadioBtn.Checked)
+            && Address_RichTextBox != null)
             {
-                if (Name_TextBox != null && LastName_TextBox != null && Username_Textbox != null
-                && Password_Textbox != null && Mail_TextBox != null && (Male_RadioBtn.Checked || Female_RadioBtn.Checked)
-                && Address_RichTextBox != null)
-                {
-                    char gender;
-                    if (Male_RadioBtn.Checked)
-                        gender = 'E';
-                    else
-                        gender = 'K';
-
-                    if (Customers.instance.Register(Name_TextBox.Text, LastName_TextBox.Text, Username_Textbox.Text,
-                        Password_Textbox.Text, Mail_TextBox.Text, gender, Address_RichTextBox.Text))
-                    {
-                        Form1.instance.ShowLoadingScreen();
-                        Close();
-                    }
-
-
-                }
+                char gender;
+                if (Male_RadioBtn.Checked)
+                    gender = 'E';
                 else
+                    gender = 'K';
+
+                if (Customers.instance.Register(Name_TextBox.Text, LastName_TextBox.Text, Username_Textbox.Text,
+                    Password_Textbox.Text, Mail_TextBox.Text, gender, Address_RichTextBox.Text))
                 {
-                    HataliMesaj.BosBirakmayin();
+                    Form1.instance.ShowLoadingScreen();
+                    Close();
                 }
+
+
             }
-
-
-
+            else
+            {
+                HataliMesaj.BosBirakmayin();
+            }
         }
 
         private void Cancel_Btn_Click(object sender, EventArgs e)

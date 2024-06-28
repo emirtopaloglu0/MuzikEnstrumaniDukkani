@@ -26,31 +26,31 @@ namespace MuzikEnstrumaniDukkani.View.Customer
             //LoadData();
         }
 
-        public void LoadData()
+        public void LoadData(List<Siparisler> siparisler)
         {
-            dataGridView5.DataSource = DB_Connection.db.Siparisler.Where(x => x.Musteri_Id == Settings.Default.UserId).ToList();
+            //dataGridView5.DataSource = DB_Connection.db.Siparisler.Where(x => x.Musteri_Id == Settings.Default.UserId).ToList();
+            dataGridView5.DataSource = siparisler;
         }
 
         private void Active_Orders(object sender, EventArgs e)
         {
-            dataGridView5.DataSource = DB_Connection.db.Siparisler.Where(x => x.Aktif == true && x.Musteri_Id == Settings.Default.UserId).ToList();
+            LoadData(DB_Connection.db.Siparisler.Where(x => x.Aktif == true && x.Musteri_Id == Settings.Default.UserId).ToList());
 
         }
 
         private void Cancelled_Orders(object sender, EventArgs e)
         {
-            dataGridView5.DataSource = DB_Connection.db.Siparisler.Where(x => x.Iptal == true && x.Musteri_Id == Settings.Default.UserId).ToList();
-
+            LoadData(DB_Connection.db.Siparisler.Where(x => x.Iptal == true && x.Musteri_Id == Settings.Default.UserId).ToList());
         }
 
         private void Delivered_Orders(object sender, EventArgs e)
         {
-            dataGridView5.DataSource = DB_Connection.db.Siparisler.Where(x => x.Tamamlandi == true && x.Musteri_Id == Settings.Default.UserId).ToList();
+            LoadData(DB_Connection.db.Siparisler.Where(x => x.Tamamlandi == true && x.Musteri_Id == Settings.Default.UserId).ToList());
         }
 
-        private void All_Orders(object sender, EventArgs e)
+        public void All_Orders(object sender, EventArgs e)
         {
-            LoadData();
+            LoadData(DB_Connection.db.Siparisler.Where(x => x.Musteri_Id == Settings.Default.UserId).ToList());
         }
 
         private void Cancel_Purch_Btn_Click(object sender, EventArgs e)
@@ -64,14 +64,14 @@ namespace MuzikEnstrumaniDukkani.View.Customer
                 if (DateTime.Now <= order.Siparis_Tarihi.Date.AddDays(3))
                 {
                     SoruMesaj.instance.SiparisIptal();
-                    if (SoruMesaj.instance.res == DialogResult.Yes)
+                    if (SoruMesaj.instance.res != DialogResult.Yes)
+                    { return; }
+
+                    if (C_Orders.instance.CancelOrder(id))
                     {
-                        if (C_Orders.instance.CancelOrder(id))
-                        {
-                            BasariliMesaj.SiparisIptalEdildi();
-                            Application.Restart();
-                            Environment.Exit(0);
-                        }
+                        BasariliMesaj.SiparisIptalEdildi();
+                        Application.Restart();
+                        Environment.Exit(0);
                     }
                 }
                 else

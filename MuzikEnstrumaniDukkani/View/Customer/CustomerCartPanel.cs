@@ -21,6 +21,7 @@ namespace MuzikEnstrumaniDukkani.View.Customer
     {
         int id;
         public static CustomerCartPanel instance = new CustomerCartPanel();
+        int toplam_Adet = 0;
 
         public CustomerCartPanel()
         {
@@ -36,7 +37,6 @@ namespace MuzikEnstrumaniDukkani.View.Customer
 
         private void CustomerCartPanel_Load(object sender, EventArgs e)
         {
-
             LoadData();
         }
 
@@ -66,66 +66,74 @@ namespace MuzikEnstrumaniDukkani.View.Customer
 
             }
         }
-        int toplam_Adet = 0;
 
         private void Purch_Btn_Click(object sender, EventArgs e)
         {
-            if (C_Orders.instance.ConfirmCart(Convert.ToInt32(Toplam_TextBox.Text)))
+            if (!C_Orders.instance.ConfirmCart(Convert.ToInt32(Toplam_TextBox.Text)))
+            { return; }
+
+            try
             {
-                try
+                foreach (DataGridViewRow row in dataGridView1.Rows)
                 {
-                    foreach (DataGridViewRow row in dataGridView1.Rows)
+                    var id = Convert.ToInt32(row.Cells["ıdDataGridViewTextBoxColumn"].Value);
+
+                    foreach (DataGridViewRow item in dataGridView1.Rows)
                     {
-                        var id = Convert.ToInt32(row.Cells["ıdDataGridViewTextBoxColumn"].Value);
-
-                        foreach (DataGridViewRow item in dataGridView1.Rows)
+                        if (id == Convert.ToInt32(item.Cells["ıdDataGridViewTextBoxColumn"].Value))
                         {
-                            if (id == Convert.ToInt32(item.Cells["ıdDataGridViewTextBoxColumn"].Value))
+                            toplam_Adet = 0;
+                            if (item.Cells["Adet"].Value != null)
                             {
-                                toplam_Adet = 0;
-                                if (item.Cells["Adet"].Value != null)
-                                {
-                                    toplam_Adet += Convert.ToInt32(item.Cells["Adet"].Value);
-                                }
-                                else
-                                {
-                                    toplam_Adet++;
-                                }
-                                break;
+                                toplam_Adet += Convert.ToInt32(item.Cells["Adet"].Value);
                             }
-
+                            else
+                            {
+                                toplam_Adet++;
+                            }
+                            break;
                         }
-                        var enst = DB_Connection.db.Enstrumanlar.Find(id);
-                        if (enst.Stok - toplam_Adet < 0)
-                        {
-                            HataliMesaj.StokHatasi();
-                            return;
-                        }
-                        else
-                        {
-                            enst.Stok = enst.Stok - toplam_Adet;
-
-                        }
-
-                        Siparis_Detay siparis = new Siparis_Detay();
-
-                        siparis.Enstruman_Id = id;
-                        siparis.Siparis_No = Settings.Default.Siparis_No;
-                        siparis.Adet = toplam_Adet;
-                        DB_Connection.db.Siparis_Detay.Add(siparis);
-                        DB_Connection.db.SaveChanges();
                     }
-                    BasariliMesaj.SatinAlim();
-                    Clear_Cart(null, null);
+                    var enst = DB_Connection.db.Enstrumanlar.Find(id);
+                    if (enst.Stok - toplam_Adet < 0)
+                    {
+                        HataliMesaj.StokHatasi();
+                        return;
+                    }
+                    else
+                    {
+                        enst.Stok = enst.Stok - toplam_Adet;
+
+                    }
+
+                    AddOrderDetail(id);
                 }
-                catch
-                {
+                BasariliMesaj.SatinAlim();
+                Clear_Cart(null, null);
+            }
+            catch (Exception ex)
+            {
+                HataliMesaj.CatchError(ex);
+            }
+        }
 
-                }
+        private void AddOrderDetail(int id)
+        {
+            try
+            {
+                Siparis_Detay siparis = new Siparis_Detay();
 
-
+                siparis.Enstruman_Id = id;
+                siparis.Siparis_No = Settings.Default.Siparis_No;
+                siparis.Adet = toplam_Adet;
+                DB_Connection.db.Siparis_Detay.Add(siparis);
+                DB_Connection.db.SaveChanges();
+            }
+            catch (Exception ex)
+            {
 
             }
+
         }
 
         public void LoadData()
@@ -157,7 +165,6 @@ namespace MuzikEnstrumaniDukkani.View.Customer
         {
             try
             {
-
                 dataGridView1.SelectedCells[6].Value = Int32.Parse(Total_TextBox.Text.Trim());
                 TotalHesap();
             }

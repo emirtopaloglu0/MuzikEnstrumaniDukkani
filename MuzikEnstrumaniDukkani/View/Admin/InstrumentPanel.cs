@@ -31,14 +31,14 @@ namespace MuzikEnstrumaniDukkani.View.Admin
 
         private void dataGridView1_SelectionChanged(object sender, EventArgs e)
         {
-            try
-            {
+            //try
+            //{
 
-            }
-            catch
-            {
+            //}
+            //catch
+            //{
 
-            }
+            //}
 
         }
 
@@ -63,9 +63,9 @@ namespace MuzikEnstrumaniDukkani.View.Admin
                 var ins = DB_Connection.db.Enstrumanlar.Where(x => x.Kategori_Id == cat_Id).ToList();
                 dataGridView1.DataSource = ins;
             }
-            catch
+            catch (Exception ex)
             {
-
+                HataliMesaj.CatchError(ex);
             }
         }
 
@@ -82,9 +82,9 @@ namespace MuzikEnstrumaniDukkani.View.Admin
                 var ins = DB_Connection.db.Enstrumanlar.ToList();
                 dataGridView1.DataSource = ins;
             }
-            catch
+            catch (Exception ex)
             {
-
+                HataliMesaj.CatchError(ex);
             }
         }
 
@@ -103,15 +103,15 @@ namespace MuzikEnstrumaniDukkani.View.Admin
         {
             try
             {
-                Properties.Settings.Default.Id = Int32.Parse(dataGridView1.SelectedCells[0].Value.ToString());
-                Properties.Settings.Default.Save();
+                Settings.Default.Id = Int32.Parse(dataGridView1.SelectedCells[0].Value.ToString());
+                Settings.Default.Save();
 
                 EnstrumanDuzenle enstrumanDuzenle = new EnstrumanDuzenle();
                 enstrumanDuzenle.ShowDialog();
             }
-            catch
+            catch (Exception ex)
             {
-
+                HataliMesaj.CatchError(ex);
             }
         }
     }

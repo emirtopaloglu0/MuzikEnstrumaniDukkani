@@ -29,9 +29,9 @@ namespace MuzikEnstrumaniDukkani.View.Customer
                 var ins = DB_Connection.db.Enstrumanlar.ToList();
                 dataGridView1.DataSource = ins;
             }
-            catch
+            catch (Exception ex)
             {
-
+                HataliMesaj.CatchError(ex);
             }
         }
 
@@ -43,9 +43,9 @@ namespace MuzikEnstrumaniDukkani.View.Customer
                 var ins = DB_Connection.db.Enstrumanlar.Where(x => x.Kategori_Id == cat_Id).ToList();
                 dataGridView1.DataSource = ins;
             }
-            catch
+            catch (Exception ex)
             {
-
+                HataliMesaj.CatchError(ex);
             }
         }
 
@@ -59,7 +59,6 @@ namespace MuzikEnstrumaniDukkani.View.Customer
         {
             try
             {
-
                 int error = 0;
                 //Form1.instance.Cart.Add(id);
 
@@ -74,7 +73,6 @@ namespace MuzikEnstrumaniDukkani.View.Customer
                 if (error == 0)
                 {
                     Form1.instance.Cart.Add(id);
-
                 }
 
             }
@@ -105,9 +103,9 @@ namespace MuzikEnstrumaniDukkani.View.Customer
                 Stok_TextBox.Text = ins.Stok.ToString();
                 Fiyat_TextBox.Text = ins.Fiyat.ToString();
             }
-            catch
+            catch (Exception ex)
             {
-
+                HataliMesaj.CatchError(ex);
             }
 
 

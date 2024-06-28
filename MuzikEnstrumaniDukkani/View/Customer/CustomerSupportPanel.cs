@@ -33,19 +33,12 @@ namespace MuzikEnstrumaniDukkani.View.Customer
         {
             try
             {
-                int id = Convert.ToInt32(dataGridView5.SelectedCells[0].Value);
-                var order = DB_Connection.db.Siparisler.Find(id);
-                if (comboBox1.SelectedIndex > -1 || (comboBox1.SelectedIndex == 4 && Talep_TextBox.Text != " ") )
+                if (comboBox1.SelectedIndex > -1 || (comboBox1.SelectedIndex == 4 && Talep_TextBox.Text != " "))
                 {
-                    Destek_Talepleri destek = new Destek_Talepleri();
-                    destek.Siparis_Id = order.Id;
-                    destek.Destek_Kategori_Id = comboBox1.SelectedIndex + 1;
-                    destek.Talep = Talep_TextBox.Text;
-                    destek.Aktif = true;
-                    destek.Talep_Tarihi = DateTime.Now;
-                    DB_Connection.db.Destek_Talepleri.Add(destek);
-                    DB_Connection.db.SaveChanges();
+                    AddTicketToDb();
+
                     BasariliMesaj.DestekOlustu();
+
                     Talep_TextBox.Text = " ";
                     comboBox1.SelectedIndex = 0;
                 }
@@ -53,17 +46,26 @@ namespace MuzikEnstrumaniDukkani.View.Customer
                 {
                     HataliMesaj.BosBirakmayin();
                 }
-
-
-
             }
-            catch
+            catch (Exception ex)
             {
+                HataliMesaj.CatchError(ex);
             }
         }
 
+        private void AddTicketToDb()
+        {
+            int id = Convert.ToInt32(dataGridView5.SelectedCells[0].Value);
+            var order = DB_Connection.db.Siparisler.Find(id);
 
-
-
+            Destek_Talepleri destek = new Destek_Talepleri();
+            destek.Siparis_Id = order.Id;
+            destek.Destek_Kategori_Id = comboBox1.SelectedIndex + 1;
+            destek.Talep = Talep_TextBox.Text;
+            destek.Aktif = true;
+            destek.Talep_Tarihi = DateTime.Now;
+            DB_Connection.db.Destek_Talepleri.Add(destek);
+            DB_Connection.db.SaveChanges();
+        }
     }
 }

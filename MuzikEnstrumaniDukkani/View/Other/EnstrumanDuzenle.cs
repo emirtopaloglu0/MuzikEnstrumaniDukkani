@@ -75,9 +75,9 @@ namespace MuzikEnstrumaniDukkani.View.Other
                 Fiyat_TextBox.Text = ens.Fiyat.ToString();
 
             }
-            catch
+            catch (Exception ex)
             {
-
+                HataliMesaj.CatchError(ex);
             }
 
 

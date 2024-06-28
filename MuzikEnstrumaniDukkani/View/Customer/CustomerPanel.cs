@@ -63,7 +63,7 @@ namespace MuzikEnstrumaniDukkani.View.Customer
 
         public void LoadOrdersData()
         {
-            customerOrdersPanel1.LoadData();
+            customerOrdersPanel1.All_Orders(null,null);
         }
     }
 }

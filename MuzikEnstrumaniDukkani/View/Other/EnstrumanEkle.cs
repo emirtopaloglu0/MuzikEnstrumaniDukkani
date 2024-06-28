@@ -26,27 +26,26 @@ namespace MuzikEnstrumaniDukkani.View.Other
             try
             {
                 SoruMesaj.instance.EnstrumanEkle();
-                if (SoruMesaj.instance.res == DialogResult.Yes)
+                if (SoruMesaj.instance.res != DialogResult.Yes)
+                { return; }
+
+                if (Name_TextBox.Text != null && Cat_ComboBox.Text != null 
+                && UretimYeri_TextBox.Text != null
+                && Stok_TextBox.Text != null && Fiyat_TextBox.Text != null)
                 {
-                    if (Name_TextBox.Text != null && Cat_ComboBox.Text != null && UretimYeri_TextBox.Text != null
-                    && Stok_TextBox.Text != null && Fiyat_TextBox.Text != null)
+                    if (C_Instruments.instance.AddIns(Name_TextBox.Text.Trim(), UretimYeri_TextBox.Text.Trim(),
+                        Convert.ToInt32(Stok_TextBox.Text), Convert.ToInt32(Fiyat_TextBox.Text),
+                        Cat_ComboBox.SelectedIndex + 1))
                     {
-                        if (C_Instruments.instance.AddIns(Name_TextBox.Text.Trim(), UretimYeri_TextBox.Text.Trim(),
-                            Convert.ToInt32(Stok_TextBox.Text), Convert.ToInt32(Fiyat_TextBox.Text),
-                            Cat_ComboBox.SelectedIndex + 1))
-                        {
-                            BasariliMesaj.EnstrumanEklendi();
-                        }
-                        InstrumentPanel.instance.LoadData();
-                        Close();
+                        BasariliMesaj.EnstrumanEklendi();
                     }
-                    else
-                    {
-                        HataliMesaj.BosBirakmayin();
-                    }
+                    InstrumentPanel.instance.LoadData();
+                    Close();
                 }
-
-
+                else
+                {
+                    HataliMesaj.BosBirakmayin();
+                }
             }
             catch (Exception ex)
             {

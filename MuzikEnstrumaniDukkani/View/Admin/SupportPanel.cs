@@ -30,7 +30,10 @@ namespace MuzikEnstrumaniDukkani.View.Admin
                 dataGridView1.DataSource = user;
 
             }
-            catch { }
+            catch (Exception ex)
+            {
+                HataliMesaj.CatchError(ex);
+            }
         }
 
         private void Send_Respond(object sender, EventArgs e)
@@ -50,7 +53,7 @@ namespace MuzikEnstrumaniDukkani.View.Admin
                     BasariliMesaj.CevapGonderildi();
                 }
             }
-            catch { }
+            catch (Exception ex) { HataliMesaj.CatchError(ex); }
 
         }
 
@@ -61,10 +64,10 @@ namespace MuzikEnstrumaniDukkani.View.Admin
             ticket.Tamamlandi = true;
             DB_Connection.db.SaveChanges();
             BasariliMesaj.Tamamlandı();
-    
+
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void IslemeAlindi_Btn_Click(object sender, EventArgs e)
         {
             int id = Convert.ToInt32(dataGridView1.SelectedCells[0].Value);
             var ticket = DB_Connection.db.Destek_Talepleri.Find(id);

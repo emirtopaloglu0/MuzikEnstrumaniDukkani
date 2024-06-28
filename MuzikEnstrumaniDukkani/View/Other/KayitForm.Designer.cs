@@ -126,7 +126,7 @@
             this.Username_Textbox.Name = "Username_Textbox";
             this.Username_Textbox.Size = new System.Drawing.Size(167, 30);
             this.Username_Textbox.TabIndex = 3;
-            this.Username_Textbox.TextChanged += new System.EventHandler(this.TextChanged);
+            this.Username_Textbox.TextChanged += new System.EventHandler(this.TextBoxTextChanged);
             // 
             // LastName_TextBox
             // 
@@ -137,7 +137,7 @@
             this.LastName_TextBox.Name = "LastName_TextBox";
             this.LastName_TextBox.Size = new System.Drawing.Size(167, 30);
             this.LastName_TextBox.TabIndex = 2;
-            this.LastName_TextBox.TextChanged += new System.EventHandler(this.TextChanged);
+            this.LastName_TextBox.TextChanged += new System.EventHandler(this.TextBoxTextChanged);
             // 
             // label3
             // 
@@ -158,7 +158,7 @@
             this.Name_TextBox.Name = "Name_TextBox";
             this.Name_TextBox.Size = new System.Drawing.Size(167, 30);
             this.Name_TextBox.TabIndex = 1;
-            this.Name_TextBox.TextChanged += new System.EventHandler(this.TextChanged);
+            this.Name_TextBox.TextChanged += new System.EventHandler(this.TextBoxTextChanged);
             // 
             // label4
             // 
